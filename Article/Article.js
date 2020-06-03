@@ -122,32 +122,37 @@ function articleMaker(data){
   const para = document.createElement('p')
   const para2 = document.createElement('p')
   const para3 = document.createElement('p')
-  const span = document.createElement('span')
+  const button = document.createElement('button')
 
   article.appendChild(title)
   article.appendChild(date)
   article.appendChild(para)
   article.appendChild(para2)
   article.appendChild(para3)
-  article.appendChild(span)  
+  article.appendChild(button)  
 
   article.classList.add('article')
   date.classList.add('date')
-  span.classList.add('expandButton')
+  button.classList.add('expandButton')
 
   title.textContent = data.title
   date.textContent = data.date
   para.textContent = data.firstParagraph
   para2.textContent = data.secondParagraph
   para3.textContent = data.thirdParagraph
+  button.textContent = "Open/Close"
 
-  article.addEventListener ('click', event => { 
+  button.addEventListener ('click', event => { 
     article.classList.toggle('article-open')
   })
 
   return article
 
 }
+
+data.push ({title:"David's news", date: "Today", firstParagraph: "Doing the Lambda thang", secondParagraph: "Chillin, chillin", thirdParagraph: "Peace out for now!"})
+
+data.push ({title:"Kristin's news", date: "Yesterday", firstParagraph: "Carter peed all over the neighbor's flowers", secondParagraph: "A drone flew over head - maybe trying to capture video of the protests", thirdParagraph: "Gotta run - reading a great book by Sue Monk Kidd"})
 
 data.forEach ( item => {
   articles.append(articleMaker(item))
