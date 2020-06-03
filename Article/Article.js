@@ -111,3 +111,49 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+const articles = document.querySelector('.articles')
+
+function articleMaker(data){
+
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const para = document.createElement('p')
+  const para2 = document.createElement('p')
+  const para3 = document.createElement('p')
+  const button = document.createElement('button')
+
+  article.appendChild(title)
+  article.appendChild(date)
+  article.appendChild(para)
+  article.appendChild(para2)
+  article.appendChild(para3)
+  article.appendChild(button)  
+
+  article.classList.add('article')
+  date.classList.add('date')
+  button.classList.add('expandButton')
+
+  title.textContent = data.title
+  date.textContent = data.date
+  para.textContent = data.firstParagraph
+  para2.textContent = data.secondParagraph
+  para3.textContent = data.thirdParagraph
+  button.textContent = "Open/Close"
+
+  button.addEventListener ('click', event => { 
+    article.classList.toggle('article-open')
+  })
+
+  return article
+
+}
+
+data.push ({title:"David's news", date: "Today", firstParagraph: "Doing the Lambda thang", secondParagraph: "Chillin, chillin", thirdParagraph: "Peace out for now!"})
+
+data.push ({title:"Kristin's news", date: "Yesterday", firstParagraph: "Carter peed all over the neighbor's flowers", secondParagraph: "A drone flew over head - maybe trying to capture video of the protests", thirdParagraph: "Gotta run - reading a great book by Sue Monk Kidd"})
+
+data.forEach ( item => {
+  articles.append(articleMaker(item))
+})
